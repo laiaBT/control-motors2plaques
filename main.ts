@@ -7,17 +7,20 @@ radio.onReceivedNumber(function (receivedNumber) {
         . # # # .
         `)
     if (receivedNumber == 1) {
-        microshield.MotorRun(microshield.Motors.M1, 70)
-        microshield.MotorRun(microshield.Motors.M4, 70)
+        microshield.MotorRun(microshield.Motors.M1, -70)
+        microshield.MotorRun(microshield.Motors.M4, -70)
     } else if (receivedNumber == 2) {
         microshield.MotorStop(microshield.Motors.M1)
         microshield.MotorStop(microshield.Motors.M4)
     } else if (receivedNumber == 3) {
         microshield.MotorRun(microshield.Motors.M1, 0)
-        microshield.MotorRun(microshield.Motors.M4, 70)
+        microshield.MotorRun(microshield.Motors.M4, -70)
     } else if (receivedNumber == 4) {
-        microshield.MotorRun(microshield.Motors.M1, 70)
+        microshield.MotorRun(microshield.Motors.M1, -70)
         microshield.MotorRun(microshield.Motors.M4, 0)
+    } else if (receivedNumber == 5) {
+        microshield.MotorRun(microshield.Motors.M1, 70)
+        microshield.MotorRun(microshield.Motors.M4, 70)
     }
 })
 input.onButtonPressed(Button.A, function () {
@@ -47,6 +50,16 @@ input.onGesture(Gesture.TiltLeft, function () {
         . # . . .
         # # # # #
         . # . . .
+        . . # . .
+        `)
+})
+input.onButtonPressed(Button.AB, function () {
+    radio.sendNumber(5)
+    basic.showLeds(`
+        . . # . .
+        . . # . .
+        # . # . #
+        . # # # .
         . . # . .
         `)
 })
